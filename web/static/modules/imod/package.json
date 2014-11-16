@@ -1,0 +1,11 @@
+{
+  "name": "imod",
+  "version": "1.0.0",
+  "author": "peichao <380692952@qq.com>",
+  "license": "ISC",
+  "imod":{
+  	"notTransform":[
+  	  "imod.js"
+  	]
+  }
+}

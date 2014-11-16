@@ -1,6 +1,6 @@
 var _path = require('path')
 var fs = require('fs-extra')
-var common = require('./server-common')
+var common = require('./common')
 var inherit = require('inherit-js')
 var _ = require('lodash')
 
@@ -60,12 +60,12 @@ function ensureExtname (file) {
 	return file
 }
 
-function getFileAbsPath (filepath, fromFileAbsPath) {
-	if(filepath.indexOf('.') === 0) {
+function getFileAbsPath (filePath, fromFileAbsPath) {
+	if(filePath.indexOf('.') === 0) {
 		if(!fromFileAbsPath || fromFileAbsPath.indexOf('/') !== 0) throw '[ERROR] "fromFileAbsPath"->"'+fromFileAbsPath+'" should be a absolute file path.'
-		return _path.resolve(_path.dirname(fromFileAbsPath), filepath)
+		return _path.resolve(_path.dirname(fromFileAbsPath), filePath)
 	}
-	else return _path.join(scriptBaseDir, filepath)
+	else return _path.join(scriptBaseDir, filePath)
 }
 
 function analyseSingleScript (scriptPath, cb) {
