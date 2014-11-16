@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{{globalStyle | style(baseUrl) }}
+	</head>
+	<body>
+		{{globalScript | script(baseUrl) }}
+		{{imodConfig | config | scriptInline}}
+		{{"pages/index/index" | main | scriptInline}}
+	</body>
+</html>
