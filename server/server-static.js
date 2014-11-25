@@ -24,9 +24,11 @@ function html (path) {
 	}
 }
 
-function assets(path){
+function assets(path, params){
+	params = params || {}
 	return function(req, res, next){
-		var filePath = _path.join(path, req.baseUrl, req.path)
+		var baseUrl = params.ignoreBaseUrl ? '' : req.baseUrl
+		var filePath = _path.join(path, baseUrl, req.path)
 		
 		var extname = _path.extname(filePath).substr(1).toLowerCase();
 		if(['js', 'css'].indexOf(extname) >= 0){

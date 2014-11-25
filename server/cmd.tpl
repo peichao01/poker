@@ -1,16 +1,16 @@
 /**
- * generate by itools
+ * generate by poker
  * contact @author: peichao <380692952@qq.com>
  */
  "use strict"
  {% if transform %}
 
-define("{{id}}", function(require, exports, module){
-	{{content}}
+define("{{id | safe}}", function(require, exports, module){
+	{{content | safe}}
 })
 
 {% else %}
 
-{{content}}
+{{content | safe}}
 
 {% endif %}

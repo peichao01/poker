@@ -15,6 +15,8 @@ var tplPath = _path.join(__dirname, './cmd.tpl')
 function cmd (content, params, cb) {
 	if(params.extname == 'js'){
 		var id = _path.relative(_path.join(params.projectRoot, params.webDir, params.baseUrl), params.filePath)
+		// 去掉 extname
+		id = id.replace(/\.\w+?$/, '')
 		var modConfig = _path.join(_path.dirname(params.filePath), './package.json')
 
 		async.parallel([
