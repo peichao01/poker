@@ -1,10 +1,8 @@
 var _path = require('path')
 var common = require('./common')
 var htmlFilter = require('./html-filter')
-var script = require('./script')
+var cmd = require('./cmd')
 var async = require('async')
-
-var cmd = script.cmd
 
 function html (path) {
 	return function(req, res, next){

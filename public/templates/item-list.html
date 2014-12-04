@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	{{title}}
+{% endblock %}
+
+{% block mainScript %}
+<script>
+	imod.use('pages/log/')
+</script>
+{% endblock %}
+
+{% block content %}
+	{% include "head.html" %}
+	<div>
+		<ul>
+		{% for item in items %}
+			<li><a href="/item/{{item.id}}">{{item.name}}</a></li>
+		{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

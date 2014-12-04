@@ -1,0 +1,11 @@
+{
+  "name": "item",
+  "version": "1.0.0",
+  "description": "",
+  "main": "list.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "peichao <380692952@qq.com>",
+  "license": "ISC"
+}

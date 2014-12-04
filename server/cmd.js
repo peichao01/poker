@@ -14,7 +14,8 @@ var tplPath = _path.join(__dirname, './cmd.tpl')
 
 function cmd (content, params, cb) {
 	if(params.extname == 'js'){
-		var id = _path.relative(_path.join(params.projectRoot, params.webDir, params.baseUrl), params.filePath)
+//		var id = _path.relative(_path.join(params.projectRoot, params.webDir, params.baseUrl), params.filePath)
+		var id = common.getModuleId(params)
 		// 去掉 extname
 		id = id.replace(/\.\w+?$/, '')
 		var modConfig = _path.join(_path.dirname(params.filePath), './package.json')
@@ -34,9 +35,14 @@ function cmd (content, params, cb) {
 					var filePath = _path.join(dirname, file)
 					return filePath === params.filePath
 				})
+				var notUseStrict = _.find(imod.notUseStrict, function(file){
+					var filePath = _path.join(dirname, file)
+					return filePath === params.filePath
+				})
 
 				cb(null, nunjucks.renderString(tpl, {
 					transform: !notTransform,
+					useStrict: !notUseStrict,
 					id: id,
 					content: content
 				}))
@@ -49,4 +55,5 @@ function cmd (content, params, cb) {
 }
 
 
-exports.cmd = cmd
+//exports.cmd = cmd
+module.exports = cmd

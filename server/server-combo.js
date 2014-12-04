@@ -3,10 +3,8 @@
 var fs = require('fs-extra')
 var _path = require('path')
 var async = require('async')
-var script = require('./script')
+var cmd = require('./cmd')
 var common = require('./common')
-
-var cmd = script.cmd
 
 function combo(path){
 	return function(req, res, next){

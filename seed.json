@@ -1,0 +1,100 @@
+{
+  "css": {
+    "widgets/toast/toast": {},
+    "modules/normalize/normalize": {}
+  },
+  "js": {
+    "widgets/toast/toast": {
+      "requires": [
+        "modules/geo/geo"
+      ]
+    },
+    "templates/head.html": {
+      "requires": [
+        "modules/nunjucks/nunjucks-slim",
+        "templates/folder/a.html",
+        "templates/f2/b.html"
+      ]
+    },
+    "templates/index-debug.html": {
+      "requires": [
+        "modules/nunjucks/nunjucks-slim"
+      ]
+    },
+    "templates/item-detail.html": {
+      "requires": [
+        "modules/nunjucks/nunjucks-slim",
+        "templates/layout.html",
+        "templates/head.html"
+      ]
+    },
+    "templates/item-list.html": {
+      "requires": [
+        "modules/nunjucks/nunjucks-slim",
+        "templates/layout.html",
+        "templates/head.html"
+      ]
+    },
+    "templates/layout.html": {
+      "requires": [
+        "modules/nunjucks/nunjucks-slim"
+      ]
+    },
+    "templates/templates": {
+      "requires": []
+    },
+    "templates/folder/a.html": {
+      "requires": [
+        "modules/nunjucks/nunjucks-slim",
+        "templates/f2/b.html"
+      ]
+    },
+    "templates/f2/b.html": {
+      "requires": [
+        "modules/nunjucks/nunjucks-slim"
+      ]
+    },
+    "pages/item/list": {
+      "requires": [
+        "modules/nav/nav"
+      ]
+    },
+    "pages/index/index": {
+      "requires": [
+        "widgets/toast/toast",
+        "modules/storage/storage",
+        "modules/geo/geo",
+        "modules/nav/nav",
+        "modules/route/route"
+      ]
+    },
+    "modules/storage/storage": {
+      "requires": []
+    },
+    "modules/route/route": {
+      "requires": []
+    },
+    "modules/nunjucks/nunjucks-slim": {
+      "requires": []
+    },
+    "modules/nav/nav": {
+      "requires": [
+        "modules/button/button"
+      ]
+    },
+    "modules/imod/imod": {
+      "requires": []
+    },
+    "modules/imod/path": {
+      "requires": []
+    },
+    "modules/geo/geo": {
+      "requires": [
+        "modules/storage/storage"
+      ]
+    },
+    "modules/button/button": {
+      "requires": []
+    }
+  }
+}

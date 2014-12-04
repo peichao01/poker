@@ -11,36 +11,19 @@
 	<meta name="apple-mobile-web-app-title" content="爱抢购">
 	<meta name="ipm" content="h5.login">
 	<title>{% block title %}{% endblock %} - 爱抢购</title>
-	<link rel="stylesheet" type="text/css" href="/static/modules/??normalize/normalize.css,common/style.css">
+	<link rel="stylesheet" href="{{globalStyle}}">
 </head>
 <body>
 <div id="content">
 	{% block content %}
 	{% endblock %}
 </div>
-
-<!--<script src="/static/??modules/seajs/sea.js,modules/seajs/seajs-combo.js,modules/seajs/seajs-patch.js,modules/zepto/zepto.js,modules/zepto/zepto-fx.js,modules/zepto/zepto-fx-method.js"></script>-->
-<script src="/static/??modules/seajs/sea.js,modules/seajs/seajs-combo.js,modules/seajs/seajs-patch.js,modules/zepto/zepto.js,modules/zepto/zepto-fx.js,modules/zepto/zepto-fx-method.js"></script>
-<!--
-TODO: seajs 的全局配置，使用工具来生成
-{{globalSeajsConfig}}
--->
+<script src="{{globalScript}}"></script>
 <script>
-	seajs.config({
-		base: '/static',
-		alias: {
-			'nunjucks': 'modules/nunjucks/nunjucks-slim',
-			'inherit': 'modules/inherit/inherit',
-			'emitter': 'modules/emitter/emitter',
-			'hammer': 'modules/hammer/hammer',
-
-			'util': 'modules/util/util',
-			'nav': 'widgets/nav/nav'
-		}
-	});
-	{% block mainScript %}
-	{% endblock %}
-//	seajs.use('pages/log/{{version}}/log');
+imod.config({{configJSON}})
+imod.use("{{mainModule}}", {{mainModuleDepsJSON}})
 </script>
+{% block mainScript %}
+{% endblock %}
 </body>
 </html>

@@ -1,0 +1,19 @@
+{
+  "name": "nunjucks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "nunjucks-slim.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "peichao <380692952@qq.com>",
+  "license": "ISC",
+	"imod":{
+		"notTransform":[
+			"nunjucks-slim.js"
+		],
+		"notUseStrict":[
+			"nunjucks-slim.js"
+		]
+	}
+}

@@ -11,7 +11,7 @@ function _responseError(res, err){
 		.set({
 			'Content-Length': _return.length
 		})
-		.end(_return)
+		.send(_return)
 }
 
 function _responseContent (res, content, contentType) {
@@ -20,7 +20,7 @@ function _responseContent (res, content, contentType) {
 		.set({
 			'Content-Length': content.length
 		})
-		.end(content)
+		.send(content)
 }
 
 function generateError (errCode, filePath) {
@@ -63,6 +63,7 @@ function checkFile(path, checkFileCb) {
 
 var files = {}
 function readFile(path, readFileCb, cache){
+	if(cache === undefined) cache = true
 	if(cache && files[path]){
 		readFileCb(null, files[path])
 	}
@@ -144,6 +145,19 @@ function readConfig(cb){
 	})
 }
 
+function getModuleId(params){
+	/**
+	 * process.cwd() 是项目目录
+	 * webDir 是web目录所在地址，有可能不在项目的根目录，webDir 是对外暴露的资源文件目录，如 /web，在：configfile.imod.server.web
+	 * baseUrl 是 imod.js 和 服务器公用的文件的相对 base 路径，如 /static、/build，在：configfile.imod.config.baseUrl
+	 * file 是文件全路径
+	 *
+	 * 最终结果：$projectRoot/web/static/module/geo/geo.js
+	 **/
+	var id = _path.relative(_path.join(params.projectRoot, params.webDir, params.baseUrl), params.filePath)
+	return id
+}
+
 exports.responseError = _responseError
 exports.responseContent = _responseContent
 exports.readFile = readFile
@@ -151,3 +165,4 @@ exports.checkFile = checkFile
 exports.readConfig = readConfig
 exports.readFile_async = readFile_async
 exports.readJson_async = readJson_async
+exports.getModuleId = getModuleId

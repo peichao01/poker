@@ -5,7 +5,8 @@
   "license": "ISC",
   "imod":{
   	"notTransform":[
-  	  "imod.js"
+  	  "imod.js",
+	    "path.js"
   	]
   }
 }

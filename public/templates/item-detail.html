@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block content %}
+	{% include "head.html" %}
+	<div>
+		<h1>{{data.name}}</h1>
+		<p>{{data.desc}}</p>
+	</div>
+{% endblock %}

@@ -1,10 +1,11 @@
 !function (exports) {
-	var imod = {}
+	var imod = exports.imod || {}
 
 	var STATUS = {
 		INIT: 1,
 		EXPORTED: 2
 	}
+	var regTemplate
 
 	imod._config = {}
 
@@ -39,6 +40,9 @@
 		for(var key in conf){
 			if(conf.hasOwnProperty(key)) imod._config[key] = conf[key]
 		}
+		if(conf.template){
+			regTemplate = new RegExp(conf.template + '$')
+		}
 	}
 	imod.use = function (id, dependencies) {
 		// var module = imod.caches[id]
@@ -47,10 +51,10 @@
 		// 	module.status = STATUS.EXPORTED
 		// }
 		imod._use = id
-		dependencies.push(id)
-		dependencies = filter(dependencies, function(id){
-			return !imod.store.get(id)
-		})
+//		dependencies.push(id)
+//		dependencies = filter(dependencies, function(id){
+//			return !imod.store.get(id)
+//		})
 		// TODO
 	}
 	function define (id, factory) {
@@ -63,6 +67,7 @@
 		imod.caches[id] = module
 	}
 	function require (id) {
+		if(regTemplate && id.match(id)) id = imod.path.join(imod._config['templatePath'] || '', id)
 		var module = imod.caches[id]
 		if(module){
 			if(module.status == STATUS.INIT){
@@ -92,4 +97,4 @@
 	define.icmd = {}
 	exports.imod = imod
 	exports.define = define
-}(this)
+}(window)

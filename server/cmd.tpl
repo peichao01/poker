@@ -2,15 +2,24 @@
  * generate by poker
  * contact @author: peichao <380692952@qq.com>
  */
- "use strict"
+
  {% if transform %}
 
 define("{{id | safe}}", function(require, exports, module){
+    {{ '"use strict";' | safe if useStrict }}
 	{{content | safe}}
-})
+});
 
 {% else %}
 
-{{content | safe}}
+    {% if useStrict %}
+
+    ;(function(){"use strict";{{content | safe}}})();
+
+    {% else %}
+
+    ;{{content | safe}}
+
+    {% endif %}
 
 {% endif %}
